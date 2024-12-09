@@ -1,3 +1,5 @@
+@use "sass:map";
+
 $grid-breakpoints: (
     xs: 0,
     sm: 576px,
@@ -7,11 +9,72 @@ $grid-breakpoints: (
     xxl: 1400px 
 );
 
-.container {
-    
+$gutter-x: 1.2rem;
+
+@mixin media-breakpoint-up($breakpoint) {
+    $selected-breakpint: map.get($grid-breakpoints, $breakpoint);
+    @if ($breakpoint == sm) { @media screen and (min-width: $selected-breakpint) { @content } }
+    @if ($breakpoint == md) { @media screen and (min-width: $selected-breakpint) { @content } }
+    @if ($breakpoint == lg) { @media screen and (min-width: $selected-breakpint) { @content } }
+    @if ($breakpoint == xl) { @media screen and (min-width: $selected-breakpint) { @content } }
+    @if ($breakpoint == xxl) { @media screen and (min-width: $selected-breakpint) { @content } }
 }
 
-.fluid-container {
+@mixin container-common() {
+    width: 100%;
+    margin: 0 auto;
+    padding-left: $gutter-x;
+    padding-right: $gutter-x;
+}
 
+@mixin column-common($number-of-columns) {
+    flex: 0 0 auto;
+    width: calc($number-of-columns / 12 * 100%);
+}
+
+.container {
+    @include container-common();
+
+    @include media-breakpoint-up(sm) { max-width: 540px; }
+    @include media-breakpoint-up(md) { max-width: 720px; }
+    @include media-breakpoint-up(lg) { max-width: 960px; }
+    @include media-breakpoint-up(xl) { max-width: 1140px; }
+    @include media-breakpoint-up(xxl) { max-width: 1320px; }
+}
+
+.container-fluid {
+    @include container-common();
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin-left: calc($gutter-x * -1);
+    margin-right: calc($gutter-x * -1);
+    
+
+    & > * {
+        width: 100%;
+        max-width: 100%;
+        padding-left: $gutter-x;
+        padding-right: $gutter-x;
+    }
+}
+
+.col {
+    flex: 1 0 0%;
+}
+
+.col-1 {
+    @include column-common(1);
+}
+
+.col-2 {
+    @include column-common(2);
+}
+
+.col-3 {
+    @include column-common(3);
 }
 
