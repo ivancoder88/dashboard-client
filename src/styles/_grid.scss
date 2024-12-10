@@ -66,15 +66,39 @@ $gutter-x: 1.2rem;
     flex: 1 0 0%;
 }
 
-.col-1 {
-    @include column-common(1);
-}
+@for $number-of-columns from 1 through 12 {
+    .col-#{$number-of-columns} {
+        @include column-common($number-of-columns);
+    }
 
-.col-2 {
-    @include column-common(2);
-}
+    @include media-breakpoint-up(sm) {
+        .col-sm-#{$number-of-columns} {
+            @include column-common($number-of-columns);
+        } 
+    }
 
-.col-3 {
-    @include column-common(3);
+    @include media-breakpoint-up(md) {
+        .col-md-#{$number-of-columns} {
+            @include column-common($number-of-columns);
+        } 
+    }
+
+    @include media-breakpoint-up(lg) {
+        .col-lg-#{$number-of-columns} {
+            @include column-common($number-of-columns);
+        } 
+    }
+
+    @include media-breakpoint-up(xl) {
+        .col-xl-#{$number-of-columns} {
+            @include column-common($number-of-columns);
+        } 
+    }
+
+    @include media-breakpoint-up(xxl) {
+        .col-xxl-#{$number-of-columns} {
+            @include column-common($number-of-columns);
+        } 
+    }
 }
 
