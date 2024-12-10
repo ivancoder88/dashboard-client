@@ -1,4 +1,13 @@
 .v-align {
     display: flex;
     align-content: center;
+    flex-wrap: wrap;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.flex-end {
+    justify-content: flex-end;
 }
