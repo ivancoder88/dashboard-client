@@ -11,4 +11,15 @@
             height: auto;
         }
     }
+
+    & .nav__links {
+
+        & > .nav__container {
+            position: relative;
+
+            & .nav__dropdown {
+                position: absolute;
+            }
+        }
+    }
 }
