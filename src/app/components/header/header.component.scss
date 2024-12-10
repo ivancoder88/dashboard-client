@@ -1,5 +1,11 @@
 .header {
-    display: flex;
-    justify-content: space-between;
     background-color: black;
+
+    & .header__logo > a {
+        display: inline-block;
+
+        & > img {
+            width: 100%;
+        }
+    }
 }
