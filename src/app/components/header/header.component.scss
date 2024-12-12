@@ -13,13 +13,14 @@
     }
 
     & .nav__links {
+        position: relative;
 
-        & > .nav__container {
-            position: relative;
-
-            & .nav__dropdown {
-                position: absolute;
-            }
+        & > .nav__dropdown {
+            position: absolute;
+            top: 5rem;
+            left: -2rem;
+            white-space: nowrap;
+            width: 100%;
         }
     }
 }
